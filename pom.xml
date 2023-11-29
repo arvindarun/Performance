@@ -52,14 +52,6 @@
                 </executions>
 
                 <configuration>
-                    <!-- Specify JMeter file -->
-                    <testFilesIncluded>
-                        <jMeterTestFile>SampleScript.jmx</jMeterTestFile>
-                    </testFilesIncluded>
-
-                    <!-- Omit time stamp in test results (optional) -->
-                    <testResultsTimestamp>false</testResultsTimestamp>
-
                     <!-- Declare user properties -->
                     <propertiesUser>
                         <jmeter.save.saveservice.output_format>csv</jmeter.save.saveservice.output_format>
