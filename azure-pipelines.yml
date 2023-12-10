@@ -34,3 +34,9 @@ steps:
     sonarQubeRunAnalysis: false
   continueOnError: true
   condition: always()
+
+- task: PublishBuildArtifacts@1
+  inputs:
+      PathtoPublish: 'target/jmeter/results'
+      ArtifactName: 'Reports'
+      publishLocation: 'Container'
