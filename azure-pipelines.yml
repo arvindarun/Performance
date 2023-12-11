@@ -35,21 +35,16 @@ parameters:
     displayName: RAMP_UP_PERIOD
     default: 20
     type: string
-continueOnError: true
 
 steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'clean test -Dthreads=${{parameters.numThreadToken}} -DrampUP=${{parameters.rampUpPeriodToken}} -DloopCount=${{parameters.loopToken}} -DloopCount=${{parameters.loopCount}} -DloopCount=${{parameters.numThreads}} -DloopCount=${{parameters.rampUpPeriod}} verify'
-    publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
   continueOnError: true
-  condition: always()
+  condition: succeededOrFailed()
 
 - task: PublishBuildArtifacts@1
   inputs:
@@ -57,4 +52,4 @@ steps:
       ArtifactName: 'Reports'
       publishLocation: 'Container'
   continueOnError: true
-  condition: always()
+  condition: succeededOrFailed()
