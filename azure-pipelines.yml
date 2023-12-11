@@ -35,6 +35,8 @@ parameters:
     displayName: RAMP_UP_PERIOD
     default: 20
     type: string
+continueOnError: true
+condition: always()
 
 steps:
 - task: Maven@4
@@ -55,3 +57,5 @@ steps:
       PathtoPublish: 'target/jmeter/results'
       ArtifactName: 'Reports'
       publishLocation: 'Container'
+  continueOnError: true
+  condition: always()
