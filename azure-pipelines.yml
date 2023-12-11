@@ -8,17 +8,17 @@ trigger:
 parameters:
   - name: thread
     displayName: THREADS
-    default: 10
+    # default: 10
     type: string
   
   - name: rampUP
     displayName: RAMP_UP
-    default: 10
+    # default: 10
     type: string
   
   - name: loopCount
     displayName: LOOP_COUNT
-    default: 10
+    # default: 10
     type: string
     
 steps:
