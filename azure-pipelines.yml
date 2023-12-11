@@ -36,7 +36,6 @@ parameters:
     default: 20
     type: string
 continueOnError: true
-condition: always()
 
 steps:
 - task: Maven@4
