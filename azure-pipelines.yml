@@ -5,27 +5,42 @@
 trigger:
   - main
 
-# parameters:
-#   - name: thread
-#     displayName: THREADS
-#     default: 10
-#     type: string
+parameters:
+  - name: numThreadToken
+    displayName: NUMBER_THREAD_TOKEN
+    default: 1
+    type: string
   
-#   - name: rampUP
-#     displayName: RAMP_UP
-#     default: 10
-#     type: string
+  - name: rampUpPeriodToken
+    displayName: RAMP_UP_PERIOD_TOKEN
+    default: 1
+    type: string
   
-#   - name: loopCount
-#     displayName: LOOP_COUNT
-#     default: 10
-#     type: string
+  - name: loopCount
+    displayName: LOOP_COUNT
+    default: 1
+    type: string
+  
+  - name: loopToken
+    displayName: LOOP_TOKEN
+    default: 1
+    type: string
     
+  - name: numThreads
+    displayName: NUM_THREADS
+    default: 10
+    type: string
+
+  - name: rampUpPeriod
+    displayName: RAMP_UP_PERIOD
+    default: 20
+    type: string
+
 steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean test verify'
+    goals: 'clean test -Dthreads=${{parameters.numThreadToken}} -DrampUP=${{parameters.rampUpPeriodToken}} -DloopCount=${{parameters.loopToken}} -DloopCount=${{parameters.loopCount}} -DloopCount=${{parameters.numThreads}} -DloopCount=${{parameters.rampUpPeriod}} verify'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
