@@ -40,7 +40,7 @@ steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean test -Dthreads=${{parameters.numThreadToken}} -DrampUP=${{parameters.rampUpPeriodToken}} -DloopCount=${{parameters.loopToken}} -DloopCount=${{parameters.loopCount}} -DloopCount=${{parameters.numThreads}} -DloopCount=${{parameters.rampUpPeriod}} verify'
+    goals: 'clean test -DnumThreadToken=${{parameters.numThreadToken}} -DrampUpPeriodToken=${{parameters.rampUpPeriodToken}} -DloopToken=${{parameters.loopToken}} -DloopCount=${{parameters.loopCount}} -DnumThreads=${{parameters.numThreads}} -DrampUpPeriod=${{parameters.rampUpPeriod}} verify'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
   continueOnError: true
