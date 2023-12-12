@@ -64,9 +64,6 @@
                         <jmeter.save.saveservice.thread_counts>true</jmeter.save.saveservice.thread_counts>
                         <jmeter.save.saveservice.thread_name>true</jmeter.save.saveservice.thread_name>
                         <jmeter.save.saveservice.time>true</jmeter.save.saveservice.time>
-                        <loopCount>${loopCount}</loopCount>
-                        <numThreads>${numThreads}</numThreads>
-                        <rampUpPeriod>${rampUpPeriod}</rampUpPeriod>
                     </propertiesUser>
                 </configuration>
 
