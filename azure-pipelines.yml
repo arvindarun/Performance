@@ -1,40 +1,40 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 trigger:
   - main
 
 parameters:
+  - name: numThreads
+    displayName: THREADS
+    default: 10
+    type: string
+  
+  - name: rampUpPeriod
+    displayName: RAMP_UP
+    default: 10
+    type: string
+  
   - name: loopCount
     displayName: LOOP_COUNT
-    default: 1
-    type: string
-
-  - name: numThreads
-    displayName: NUM_THREADS
     default: 10
     type: string
 
-  - name: rampUpPeriod
-    displayName: RAMP_UP_PERIOD
-    default: 20
-    type: string
-
 steps:
-- task: Maven@4
+- task: Maven@3
+  displayName: 'Maven pom.xml'
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean test -DloopCount=${{parameters.loopCount}} -DnumThreads=${{parameters.numThreads}} -DrampUpPeriod=${{parameters.rampUpPeriod}} verify'
+    goals: 'clean test -DnumThreads=${{parameters.numThreads}} -DrampUpPeriod=${{parameters.rampUpPeriod}} -DloopCount=${{parameters.loopCount}} verify'
+    publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
   continueOnError: true
   condition: always()
 
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: Report'
   inputs:
-      PathtoPublish: 'target/jmeter/results'
-      ArtifactName: 'Reports'
-      publishLocation: 'Container'
-  continueOnError: true
+    PathtoPublish: 'target/jmeter/results'
+    ArtifactName: Report
   condition: always()
