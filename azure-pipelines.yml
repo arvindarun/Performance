@@ -25,7 +25,7 @@ steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean test -DloopCount=${{parameters.loopCount}} -DnumThreads=${{parameters.numThreads}} -DrampUpPeriod=${{parameters.rampUpPeriod}} verify'
+    goals: 'clean test ${{parameters.loopCount}} ${{parameters.numThreads}} ${{parameters.rampUpPeriod}} verify'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
   continueOnError: true
