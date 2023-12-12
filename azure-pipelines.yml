@@ -6,26 +6,11 @@ trigger:
   - main
 
 parameters:
-  - name: numThreadToken
-    displayName: NUMBER_THREAD_TOKEN
-    default: 1
-    type: string
-  
-  - name: rampUpPeriodToken
-    displayName: RAMP_UP_PERIOD_TOKEN
-    default: 1
-    type: string
-  
   - name: loopCount
     displayName: LOOP_COUNT
     default: 1
     type: string
-  
-  - name: loopToken
-    displayName: LOOP_TOKEN
-    default: 1
-    type: string
-    
+
   - name: numThreads
     displayName: NUM_THREADS
     default: 10
