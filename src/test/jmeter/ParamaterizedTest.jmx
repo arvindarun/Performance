@@ -7,23 +7,7 @@
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="loopCount" elementType="Argument">
-            <stringProp name="Argument.name">loopCount</stringProp>
-            <stringProp name="Argument.value">${__P(loopCount), 1}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="numThreads" elementType="Argument">
-            <stringProp name="Argument.name">numThreads</stringProp>
-            <stringProp name="Argument.value">${__P(numThreads), 10}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="rampUpPeriod" elementType="Argument">
-            <stringProp name="Argument.name">rampUpPeriod</stringProp>
-            <stringProp name="Argument.value">${__P(rampUpPeriod), 10}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-        </collectionProp>
+        <collectionProp name="Arguments.arguments"/>
       </elementProp>
     </TestPlan>
     <hashTree>
@@ -150,11 +134,11 @@
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">${loopCount}</stringProp>
+          <stringProp name="LoopController.loops">${__P(loopCount, 1)}</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${numThreads}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${rampUpPeriod}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(numThreads, 100)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampUpPeriod, 100)}</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
