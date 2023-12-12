@@ -29,7 +29,7 @@ steps:
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
   continueOnError: true
-  condition: succeededOrFailed()
+  condition: always()
 
 - task: PublishBuildArtifacts@1
   inputs:
@@ -37,4 +37,4 @@ steps:
       ArtifactName: 'Reports'
       publishLocation: 'Container'
   continueOnError: true
-  condition: succeededOrFailed()
+  condition: always()
